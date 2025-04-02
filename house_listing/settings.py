@@ -171,9 +171,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Use your SMTP server (e.g., 'smtp.gmail.com')
 EMAIL_PORT = 587  # For TLS, use port 587. If you're using SSL, use port 465.
 EMAIL_USE_TLS = True  # If you're using TLS
-EMAIL_HOST_USER = 'parkservices247@gmail.com'
-EMAIL_HOST_PASSWORD = 'ajrnqbxbcmpueise'
+EMAIL_HOST_USER = '
+EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'danmama@info.com'  
 
-PAYSTACK_SECRET_KEY = 'sk_test_0e6c9044ae534559418a49d82bd840fb40a4145c'
-PAYSTACK_PUBLIC_KEY = 'pk_test_ab0a209797741668b57060301104479e9eeb99a0'
+PAYSTACK_SECRET_KEY = ''
+PAYSTACK_PUBLIC_KEY = ''
