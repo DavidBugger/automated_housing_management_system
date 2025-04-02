@@ -1,0 +1,677 @@
+{% include 'base/admin_base.html' %} {% include 'components/admin_nav.html' %}
+<!-- PAGE -->
+<div class="page">
+  <!-- HEADER -->
+  {% include 'components/admin_header.html' %}
+  <!-- END HEADER -->
+
+  <!-- SIDEBAR -->
+
+  {% include 'components/admin_sidebar.html' %} {% if messages %} {% for message
+  in messages %}
+  <div {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>
+    {{ message }}
+  </div>
+  {% comment %} {% endfor %}  {% endcomment %}
+  {% endif %}
+
+  <!-- MAIN-CONTENT -->
+  <div class="content">
+    <div class="main-content">
+      <!-- Start::page-header -->
+      <div
+        class="md:flex block items-center justify-between my-[1.5rem] page-header-breadcrumb"
+      >
+        <div>
+          <p
+            class="font-semibold text-[1.125rem] text-defaulttextcolor dark:text-defaulttextcolor/70 !mb-0"
+          >
+            Welcome back, {{request.user }}!
+          </p>
+          <p
+            class="font-normal text-[#8c9097] dark:text-white/50 text-[0.813rem]"
+          >
+            Track your sales activity, leads and deals here.
+          </p>
+        </div>
+        <div class="btn-list md:mt-0 mt-2">
+          <button
+            type="button"
+            class="ti-btn bg-primary text-white btn-wave !font-medium !me-[0.375rem] !ms-0 !text-[0.85rem] !rounded-[0.35rem] !py-[0.51rem] !px-[0.86rem] shadow-none"
+          >
+            <i class="ri-filter-3-fill inline-block"></i>Filters
+          </button>
+          <button
+            type="button"
+            class="ti-btn ti-btn-outline-secondary btn-wave !font-medium !me-[0.375rem] !ms-0 !text-[0.85rem] !rounded-[0.35rem] !py-[0.51rem] !px-[0.86rem] shadow-none"
+          >
+            <i class="ri-upload-cloud-line inline-block"></i>Export
+          </button>
+        </div>
+      </div>
+      <!-- End::page-header -->
+
+      <div class="grid grid-cols-12 gap-x-6">
+        <div class="xxl:col-span-9 xl:col-span-12 col-span-12">
+          <div class="grid grid-cols-12 gap-x-6">
+            <div class="xxl:col-span-4 xl:col-span-4 col-span-12">
+              <div class="xxl:col-span-12 xl:col-span-12 col-span-12">
+                <div class="box crm-highlight-card">
+                  <div class="box-body">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div
+                          class="font-semibold text-[1.125rem] text-white mb-2"
+                        >
+                          Your target is incomplete
+                        </div>
+                        <span class="block text-[0.75rem] text-white"
+                          ><span class="opacity-[0.7]">You have completed</span>
+                          <span class="font-semibold text-warning">48%</span>
+                          <span class="opacity-[0.7]"
+                            >of the given target, you can also check your
+                            status</span
+                          >.</span
+                        >
+                        <span class="block font-semibold mt-[0.125rem]"
+                          ><a
+                            class="text-white text-[0.813rem]"
+                            href="javascript:void(0);"
+                            ><u>Click here</u></a
+                          ></span
+                        >
+                      </div>
+                      <div>
+                        <div id="crm-main"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="xxl:col-span-12 xl:col-span-12 col-span-12">
+                <div class="box">
+                  <div class="box-header justify-between">
+                    <div class="box-title">Profit Earned</div>
+                    <div class="hs-dropdown ti-dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        class="px-2 font-normal text-[0.75rem] text-[#8c9097] dark:text-white/50"
+                        aria-expanded="false"
+                      >
+                        View All<i
+                          class="ri-arrow-down-s-line align-middle ms-1 inline-block"
+                        ></i>
+                      </a>
+                      <ul
+                        class="hs-dropdown-menu ti-dropdown-menu hidden"
+                        role="menu"
+                      >
+                        <li>
+                          <a
+                            class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                            href="javascript:void(0);"
+                            >Today</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                            href="javascript:void(0);"
+                            >This Week</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                            href="javascript:void(0);"
+                            >Last Week</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="box-body !py-0 !ps-0">
+                    <div id="crm-profits-earned"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="xxl:col-span-8 xl:col-span-8 col-span-12">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="xxl:col-span-6 xl:col-span-6 col-span-12">
+                  <div class="box overflow-hidden">
+                    <div class="box-body">
+                      <div class="flex items-top justify-between">
+                        <div>
+                          <span
+                            class="!text-[0.8rem] !w-[2.5rem] !h-[2.5rem] !leading-[2.5rem] !rounded-full inline-flex items-center justify-center bg-primary"
+                          >
+                            <i class="ti ti-users text-[1rem] text-white"></i>
+                          </span>
+                        </div>
+                        <div class="flex-grow ms-4">
+                          <div
+                            class="flex items-center justify-between flex-wrap"
+                          >
+                            <div>
+                              <p
+                                class="text-[#8c9097] dark:text-white/50 text-[0.813rem] mb-0"
+                              >
+                                Total Customers
+                              </p>
+                              <h4 class="font-semibold text-[1.5rem] !mb-2">
+                                1,02,890
+                              </h4>
+                            </div>
+                            <div id="crm-total-customers"></div>
+                          </div>
+                          <div class="flex items-center justify-between !mt-1">
+                            <div>
+                              <a
+                                class="text-primary text-[0.813rem]"
+                                href="javascript:void(0);"
+                                >View All<i
+                                  class="ti ti-arrow-narrow-right ms-2 font-semibold inline-block"
+                                ></i
+                              ></a>
+                            </div>
+                            <div class="text-end">
+                              <p
+                                class="mb-0 text-success text-[0.813rem] font-semibold"
+                              >
+                                +40%
+                              </p>
+                              <p
+                                class="text-[#8c9097] dark:text-white/50 opacity-[0.7] text-[0.6875rem]"
+                              >
+                                this month
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="xxl:col-span-6 xl:col-span-6 col-span-12">
+                  <div class="box overflow-hidden">
+                    <div class="box-body">
+                      <div class="flex items-top justify-between">
+                        <div>
+                          <span
+                            class="!text-[0.8rem] !w-[2.5rem] !h-[2.5rem] !leading-[2.5rem] !rounded-full inline-flex items-center justify-center bg-secondary"
+                          >
+                            <i class="ti ti-wallet text-[1rem] text-white"></i>
+                          </span>
+                        </div>
+                        <div class="flex-grow ms-4">
+                          <div
+                            class="flex items-center justify-between flex-wrap"
+                          >
+                            <div>
+                              <p
+                                class="text-[#8c9097] dark:text-white/50 text-[0.813rem] mb-0"
+                              >
+                                Total Revenue
+                              </p>
+                              <h4 class="font-semibold text-[1.5rem] !mb-2">
+                                N 56,562
+                              </h4>
+                            </div>
+                            <div id="crm-total-revenue"></div>
+                          </div>
+                          <div class="flex items-center justify-between mt-1">
+                            <div>
+                              <a
+                                class="text-secondary text-[0.813rem]"
+                                href="javascript:void(0);"
+                                >View All<i
+                                  class="ti ti-arrow-narrow-right ms-2 font-semibold inline-block"
+                                ></i
+                              ></a>
+                            </div>
+                            <div class="text-end">
+                              <p
+                                class="mb-0 text-success text-[0.813rem] font-semibold"
+                              >
+                                +25%
+                              </p>
+                              <p
+                                class="text-[#8c9097] dark:text-white/50 opacity-[0.7] text-[0.6875rem]"
+                              >
+                                this month
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="xxl:col-span-6 xl:col-span-6 col-span-12">
+                  <div class="box overflow-hidden">
+                    <div class="box-body">
+                      <div class="flex items-top justify-between">
+                        <div>
+                          <span
+                            class="!text-[0.8rem] !w-[2.5rem] !h-[2.5rem] !leading-[2.5rem] !rounded-full inline-flex items-center justify-center bg-success"
+                          >
+                            <i
+                              class="ti ti-wave-square text-[1rem] text-white"
+                            ></i>
+                          </span>
+                        </div>
+                        <div class="flex-grow ms-4">
+                          <div
+                            class="flex items-center justify-between flex-wrap"
+                          >
+                            <div>
+                              <p
+                                class="text-[#8c9097] dark:text-white/50 text-[0.813rem] mb-0"
+                              >
+                                Conversion Ratio
+                              </p>
+                              <h4 class="font-semibold text-[1.5rem] !mb-2">
+                                12.08%
+                              </h4>
+                            </div>
+                            <div id="crm-conversion-ratio"></div>
+                          </div>
+                          <div class="flex items-center justify-between mt-1">
+                            <div>
+                              <a
+                                class="text-success text-[0.813rem]"
+                                href="javascript:void(0);"
+                                >View All<i
+                                  class="ti ti-arrow-narrow-right ms-2 font-semibold inline-block"
+                                ></i
+                              ></a>
+                            </div>
+                            <div class="text-end">
+                              <p
+                                class="mb-0 text-danger text-[0.813rem] font-semibold"
+                              >
+                                -12%
+                              </p>
+                              <p
+                                class="text-[#8c9097] dark:text-white/50 opacity-[0.7] text-[0.6875rem]"
+                              >
+                                this month
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="xxl:col-span-6 xl:col-span-6 col-span-12">
+                  <div class="box overflow-hidden">
+                    <div class="box-body">
+                      <div class="flex items-top justify-between">
+                        <div>
+                          <span
+                            class="!text-[0.8rem] !w-[2.5rem] !h-[2.5rem] !leading-[2.5rem] !rounded-full inline-flex items-center justify-center bg-warning"
+                          >
+                            <i
+                              class="ti ti-briefcase text-[1rem] text-white"
+                            ></i>
+                          </span>
+                        </div>
+                        <div class="flex-grow ms-4">
+                          <div
+                            class="flex items-center justify-between flex-wrap"
+                          >
+                            <div>
+                              <p
+                                class="text-[#8c9097] dark:text-white/50 text-[0.813rem] mb-0"
+                              >
+                                Total Deals
+                              </p>
+                              <h4 class="font-semibold text-[1.5rem] !mb-2">
+                                2,543
+                              </h4>
+                            </div>
+                            <div id="crm-total-deals"></div>
+                          </div>
+                          <div class="flex items-center justify-between mt-1">
+                            <div>
+                              <a
+                                class="text-warning text-[0.813rem]"
+                                href="javascript:void(0);"
+                                >View All<i
+                                  class="ti ti-arrow-narrow-right ms-2 font-semibold inline-block"
+                                ></i
+                              ></a>
+                            </div>
+                            <div class="text-end">
+                              <p
+                                class="mb-0 text-success text-[0.813rem] font-semibold"
+                              >
+                                +19%
+                              </p>
+                              <p
+                                class="text-[#8c9097] dark:text-white/50 opacity-[0.7] text-[0.6875rem]"
+                              >
+                                this month
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="xxl:col-span-12 xl:col-span-12 col-span-12">
+                  <div class="box">
+                    <div class="box-header !gap-0 !m-0 justify-between">
+                      <div class="box-title">Revenue Analytics</div>
+                      <div class="hs-dropdown ti-dropdown">
+                        <a
+                          href="javascript:void(0);"
+                          class="text-[0.75rem] px-2 font-normal text-[#8c9097] dark:text-white/50"
+                          aria-expanded="false"
+                        >
+                          View All<i
+                            class="ri-arrow-down-s-line align-middle ms-1 inline-block"
+                          ></i>
+                        </a>
+                        <ul
+                          class="hs-dropdown-menu ti-dropdown-menu hidden"
+                          role="menu"
+                        >
+                          <li>
+                            <a
+                              class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                              href="javascript:void(0);"
+                              >Today</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                              href="javascript:void(0);"
+                              >This Week</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                              href="javascript:void(0);"
+                              >Last Week</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="box-body !py-5">
+                      <div id="crm-revenue-analytics"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="xxl:col-span-12 xl:col-span-12 col-span-12">
+              <div class="box custom-card">
+                <div class="box-header justify-between">
+                  <div class="box-title">Interested Buyers</div>
+                  <div class="flex flex-wrap gap-2">
+                    <div>
+                      <input
+                        class="ti-form-control form-control-sm"
+                        type="text"
+                        placeholder="Search Here"
+                        aria-label=".form-control-sm example"
+                      />
+                    </div>
+                    <div class="hs-dropdown ti-dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        class="ti-btn ti-btn-primary !bg-primary !text-white !py-1 !px-2 !text-[0.75rem] !m-0 !gap-0 !font-medium"
+                        aria-expanded="false"
+                      >
+                        Sort By<i
+                          class="ri-arrow-down-s-line align-middle ms-1 inline-block"
+                        ></i>
+                      </a>
+                      <ul
+                        class="hs-dropdown-menu ti-dropdown-menu hidden"
+                        role="menu"
+                      >
+                        <li>
+                          <a
+                            class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                            href="javascript:void(0);"
+                            >New</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                            href="javascript:void(0);"
+                            >Popular</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                            href="javascript:void(0);"
+                            >Relevant</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <div class="overflow-x-auto">
+                    <table class="table min-w-full whitespace-nowrap table-hover border table-bordered">
+                      <thead>
+                          <tr class="border border-inherit border-solid dark:border-defaultborder/10">
+                              <th scope="col" class="!text-start !text-[0.85rem] min-w-[200px]">Sender</th>
+                              <th scope="col" class="!text-start !text-[0.85rem]">Message</th>
+                              <th scope="col" class="!text-start !text-[0.85rem]">Proposed Amount</th>
+                              <th scope="col" class="!text-start !text-[0.85rem]">Date</th>
+                              <th scope="col" class="!text-start !text-[0.85rem]">Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for negotiation in negotiations %}
+                          <tr class="border border-inherit border-solid hover:bg-gray-100 dark:border-defaultborder/10 dark:hover:bg-light">
+                              <td>
+                                  {% if negotiation.sender %}
+                                      {{ negotiation.sender.username }}
+                                  {% else %}
+                                      Guest ({{ negotiation.guest_name }})
+                                  {% endif %}
+                              </td>
+                              <td>{{ negotiation.message }}</td>
+                              <td>N{{ negotiation.proposed_amount }}</td>
+                              <td>{{ negotiation.created_at|date:"M d, Y H:i" }}</td>
+                              <td>
+                                  <button
+                                      class="btn btn-primary btn-sm"
+                                      data-bs-toggle="modal"
+                                      data-bs-target="#acceptModal"
+                                      data-negotiation-id="{{ negotiation.id }}"
+                                      data-buyer-email="{{ negotiation.guest_email }}"
+                                      data-proposed-amount="{{ negotiation.proposed_amount }}"
+                                  >
+                                      Accept
+                                  </button>
+                              </td>
+                          </tr>
+                          {% empty %}
+                          <tr>
+                              <td colspan="5" class="text-center">No negotiations found.</td>
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>
+                  </div>
+                </div>
+                <div class="box-footer">
+                  <div class="sm:flex items-center">
+                    <div
+                      class="text-defaulttextcolor dark:text-defaulttextcolor/70"
+                    >
+                      Showing 5 Entries
+                      <i class="bi bi-arrow-right ms-2 font-semibold"></i>
+                    </div>
+                    <div class="ms-auto">
+                      <nav
+                        aria-label="Page navigation"
+                        class="pagination-style-4"
+                      >
+                        <ul class="ti-pagination mb-0">
+                          <li class="page-item disabled">
+                            <a class="page-link" href="javascript:void(0);">
+                              Prev
+                            </a>
+                          </li>
+                          <li class="page-item">
+                            <a
+                              class="page-link active"
+                              href="javascript:void(0);"
+                              >1</a
+                            >
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);"
+                              >2</a
+                            >
+                          </li>
+                          <li class="page-item">
+                            <a
+                              class="page-link !text-primary"
+                              href="javascript:void(0);"
+                            >
+                              next
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+  <!-- END MAIN-CONTENT -->
+
+ a
+
+  <div
+  
+    class="modal fade"
+    id="acceptModal"
+    tabindex="-1"
+    aria-labelledby="acceptModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="acceptModalLabel">Accept Negotiation</h5>
+         
+          <button
+          type="button"
+          
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >X</button>
+        </div>
+        <div class="modal-body">
+          <form id="acceptNegotiationForm" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="negotiation_id" id="negotiationId" />
+            <div class="mb-3">
+              <label for="buyerEmail" class="form-label">Buyer Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="buyerEmail"
+                name="buyer_email"
+                readonly
+              />
+            </div>
+            <div class="mb-3">
+              <label for="proposedAmount" class="form-label"
+                >Proposed Amount</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="proposedAmount"
+                name="proposed_amount"
+                readonly
+              />
+            </div>
+            <button type="submit" class="btn btn-success btn-sm">
+              Send Smart Contract
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $("#acceptModal").on("show.bs.modal", function (event) {
+        const button = $(event.relatedTarget); // Button that triggered the modal
+        const negotiationId = button.data("negotiation-id");
+        const buyerEmail = button.data("buyer-email");
+        const proposedAmount = button.data("proposed-amount");
+
+        // Populate the modal fields
+        $("#negotiationId").val(negotiationId);
+        $("#buyerEmail").val(buyerEmail);
+        $("#proposedAmount").val(proposedAmount);
+      });
+
+      // Handle form submission
+      $("#acceptNegotiationForm").on("submit", function (e) {
+        e.preventDefault();
+        const form = $(this);
+        const formData = $(this).serialize();
+        const submitButton = form.find("button[type='submit']");
+            submitButton.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Please wait...');
+            submitButton.prop("disabled", true);
+
+        $.ajax({
+          url: "{% url 'accept_negotiation' %}",
+          type: "POST",
+          data: formData,
+          success: function (response) {
+            Swal.fire({
+              icon: "success",
+              title: "Success",
+              timer: 2000,
+              text: response.message,
+            }).then(() => {
+              location.reload(); // Reload the page
+            });
+          },
+          error: function (xhr) {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "An error occurred. Please try again.",
+            });
+          },
+        });
+      });
+    });
+  </script>
+
+  {% include 'components/admin_footer.html' %}
+</div>

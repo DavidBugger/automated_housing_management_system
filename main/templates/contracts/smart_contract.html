@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .contract {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contract">
+        <p>
+            <a href="{% url 'initiate_payment' property.id %}?amount={{ proposed_amount }}" class="btn btn-primary">
+                Proceed to Payment
+            </a>
+        </p>
+        <h1>Smart Contract</h1>
+        <p><strong>Property:</strong> {{ property.property_name }}</p>
+        <p><strong>Buyer:</strong> {{ buyer.username }}</p>
+        <p><strong>Seller:</strong> {{ seller.username }}</p>
+        <p>This contract is generated for the purchase of the property.</p>
+    </div>
+</body>
+</html>

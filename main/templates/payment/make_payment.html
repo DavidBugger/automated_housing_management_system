@@ -1,0 +1,23 @@
+<button id="payButton" data-property-id="{{ property_listing.id }}">Pay Now</button>
+
+<script>
+    $("#payButton").on("click", function () {
+        const propertyId = $(this).data("property-id");
+        const url = `/property_listing/${propertyId}/initiate_payment/`;
+
+        $.ajax({
+            url: url,
+            type: "GET",
+            success: function (response) {
+                if (response.status) {
+                    window.location.href = response.data.authorization_url;
+                } else {
+                    Swal.fire("Error", "Unable to initiate payment.", "error");
+                }
+            },
+            error: function () {
+                Swal.fire("Error", "An error occurred while initiating payment.", "error");
+            },
+        });
+    });
+</script>

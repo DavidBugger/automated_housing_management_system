@@ -1,0 +1,113 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!-- Featured Property Section Start -->
+<div class="featured-property" id="products">
+    <div class="container">
+        <div class="row">
+            <div class="container">
+                <div class="col">
+                
+            </div>
+            </div>
+            <div class="col-md-12">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp">Properties</h3>
+                    <h2 class="text-anime">Featured Properties</h2>
+                </div>
+                <!-- Section Title End -->
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Loop through your dynamic property items here -->
+            {% for property in property_filter.qs %}
+            <div class="col-md-4">
+                <!-- Property Item Start -->
+                <div class="property-item">
+                    <!-- Property Item Header Start -->
+                    <div class="property-header">
+                        <figure class="image-anime">
+                            <img src="{{ property.property_photo.url }}" alt="">
+                        </figure>
+
+                        <span class="property-label">{{ property.property_name }}</span>
+                    </div>
+                    <!-- Property Item Header End -->
+
+                    <!-- Property Item Body Start -->
+                    <div class="property-body">
+                        <h3>{{ property.property_name }}</h3>
+                        <p>{{ property.property_location }}</p>
+
+                        <div class="property-meta">
+                            <div class="property-amenity-item">
+                                <div class="icon-box">
+                                    {% comment %} <img src="{{ property.bedroom_icon_url }}" alt=""> {% endcomment %}
+										{% comment %} <img src="{% static 'images/icon-bedrooms.svg' %}" alt=""> {% endcomment %}
+                                        {% comment %} <i class = "fa fa-user"></i> {% endcomment %}
+                                        <i class="fa-solid fa-bed text-primary-800"></i>
+
+                                </div>
+                                <span>{{ property.bedroom }}</span>
+                            </div>
+
+                            <div class="property-amenity-item">
+                                <div class="icon-box">
+                                    {% comment %} <img src="{{ property.bathroom_icon_url }}" alt=""> {% endcomment %}
+										{% comment %} <img src="{% static 'images/icon-bathrooms.svg' %}" alt=""> {% endcomment %}
+                                        <i class="fa-solid fa-bath"></i>
+
+                                </div>
+                                <span>{{ property.bathroom }}</span>
+                            </div>
+
+                            <div class="property-amenity-item">
+                                <div class="icon-box">
+                                    {% comment %} <img src="{% static 'images/icon-areas.svg' %}" alt=""> {% endcomment %}
+                                    <i class="fa-solid fa-land-mine-on"></i>
+
+                                </div>
+                                <span>{{ property.plot_size }}</span>
+                            </div>
+
+                            <div class="property-amenity-item">
+                                <div class="icon-box">
+                                    {% comment %} <img src="{% static 'images/icon-garages.svg' %}" alt=""> {% endcomment %}
+                                    <i class="fa-solid fa-warehouse"></i>
+
+                                </div>
+                                <span>{{ property.garages }}</span>
+                            </div>
+                            <div class="property-amenity-item">
+                                <div class="icon-box">
+                                    {% comment %} <img src="{% static 'images/icon-garages.svg' %}" alt=""> {% endcomment %}
+                                    <i class="fa-solid fa-warehouse"></i>
+
+                                </div>
+                                <span>  {% if property.status == "sold" %}
+                                    <span class="badge bg-info text-white">Sold</span>
+                                {% else %}
+                                    <span class="badge bg-success text-black">Available</span>
+                                {% endif %}
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Property Item Body End -->
+
+                    <!-- Property Item Footer Start -->
+                    <div class="property-footer">
+                        <i class="fa-solid fa-money-bill text-warning"></i>
+                         <p class="property-price">{{ property.price }}</p>
+                        <a href="{% url 'property_listing' id=property.id  %}" class="btn-default">View Property</a>
+                    </div>
+                    <!-- Property Item Footer End -->
+                </div>
+                <!-- Property Item End -->
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Featured Property Section End -->

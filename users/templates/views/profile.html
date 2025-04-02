@@ -1,0 +1,301 @@
+{% load static %}
+{% include 'base/admin_base.html' %}
+{% include 'components/admin_nav.html' %}
+{% load crispy_forms_tags %}
+
+       
+
+	<body>
+         <!-- PAGE -->
+         <div class="page">
+            <!-- HEADER -->
+           {% include 'components/admin_header.html' %} 
+            <!-- END HEADER -->
+            <!-- SIDEBAR -->
+           {% include 'components/admin_sidebar.html' %}
+            <!-- MAIN-CONTENT -->
+            <div class="content">
+                <div class="main-content">
+                    <!-- Page Header -->
+                    <div class="block justify-between page-header md:flex">
+                        <div>
+                            <h3 class="!text-defaulttextcolor dark:!text-defaulttextcolor/70 dark:text-white dark:hover:text-white text-[1.125rem] font-semibold"> Profile</h3>
+                        </div>
+                        <ol class="flex items-center whitespace-nowrap min-w-0">
+                            <li class="text-[0.813rem] ps-[0.5rem]">
+                            <a class="flex items-center text-primary hover:text-primary dark:text-primary truncate" href="javascript:void(0);">
+                                Pages
+                                <i class="ti ti-chevrons-right flex-shrink-0 text-[#8c9097] dark:text-white/50 px-[0.5rem] overflow-visible rtl:rotate-180"></i>
+                            </a>
+                            </li>
+                            <li class="text-[0.813rem] text-defaulttextcolor font-semibold hover:text-primary dark:text-[#8c9097] dark:text-white/50 " aria-current="page">
+                                Profile
+                            </li>
+                        </ol>
+                    </div>
+                    <!-- Page Header Close -->
+
+                    <!-- Start::row-1 -->
+                    <div class="grid grid-cols-12 gap-x-6">
+                        <div class="xxl:col-span-4 xl:col-span-12 col-span-12">
+                            <div class="box overflow-hidden">
+                                <div class="box-body !p-0">
+                                    <div class="sm:flex items-start p-6      main-profile-cover">
+                                        <div>
+                                            <span class="avatar avatar-xxl avatar-rounded online me-4">
+                                                {% if request.user.profile.photo %}
+                                                    <img class="inline-block rounded-full" src="{{ request.user.profile.photo.url }}" width="32" height="32" alt="User Photo">
+                                                {% else %}
+                                                    <i class="fas fa-user fa-2x"></i>
+                                                {% endif %}
+
+                                            </span>
+                                        </div>
+                                        <div class="flex-grow main-profile-info">
+                                            <div class="flex items-center !justify-between">
+                                                <h6 class="font-semibold mb-1 text-white text-[1rem]"></h6>
+                                                <button type="button" class="ti-btn ti-btn-light !font-medium !gap-0"><i class="ri-add-line me-1 align-middle inline-block"></i>Follow</button>
+                                            </div>
+                                            <p class="mb-1 !text-white  opacity-[0.7]">Developer</p>
+                                            <p class="text-[0.75rem] text-white mb-6 opacity-[0.5]">
+                                                <span class="me-4 inline-flex"><i class="ri-building-line me-1 align-middle"></i>{{request.user}}</span>
+                                                <span class="inline-flex"><i class="ri-map-pin-line me-1 align-middle"></i>University of Jos</span>
+                                            </p>
+                                            {% comment %} <div class="flex mb-0">
+                                                <div class="me-6">
+                                                    <p class="font-bold text-[1.25rem] text-white text-shadow mb-0">113</p>
+                                                    <p class="mb-0 text-[.6875rem] opacity-[0.5] text-white">Projects</p>
+                                                </div>
+                                                <div class="me-6">
+                                                    <p class="font-bold text-[1.25rem] text-white text-shadow mb-0">12.2k</p>
+                                                    <p class="mb-0 text-[.6875rem] opacity-[0.5] text-white">Followers</p>
+                                                </div>
+                                                <div class="me-6">
+                                                    <p class="font-bold text-[1.25rem] text-white text-shadow mb-0">128</p>
+                                                    <p class="mb-0 text-[.6875rem] opacity-[0.5] text-white">Following</p>
+                                                </div>
+                                            </div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                    <div class="p-6 border-b border-dashed dark:border-defaultborder/10">
+                                        <div class="mb-6">
+                                            <p class="text-[.9375rem] mb-2 font-semibold">Professional Bio :</p>
+                                            <p class="text-[0.75rem] text-[#8c9097] dark:text-white/50 opacity-[0.7] mb-0">
+                                                I am <b class="text-defaulttextcolor">{{request.user.username}},</b>,i am the founder and managing director of the prestigeous company name laugh at all and acts as the cheif executieve officer of the company.
+                                            </p>
+                                        </div>
+                                        {% comment %} <div class="mb-0">
+                                            <p class="text-[.9375rem] mb-2 font-semibold">Links :</p>
+                                            <div class="mb-0">
+                                                <p class="mb-1">
+                                                    <a href="javascript:void(0)" class="text-primary"><u>https://www.spruko.com/</u></a>
+                                                </p>
+                                                <p class="mb-0">
+                                                    <a href="javascript:void(0)" class="text-primary"><u>https://themeforest.net/user/ spruko/portfolio</u></a>
+                                                </p>
+                                            </div>
+                                        </div> {% endcomment %}
+                                    </div>
+                                    <div class="p-6 border-b border-dashed dark:border-defaultborder/10">
+                                        <p class="text-[.9375rem] mb-2 me-6 font-semibold">Contact Information :</p>
+                                        <div class="text-[#8c9097] dark:text-white/50">
+                                            <p class="mb-2">
+                                                <span class="avatar avatar-sm avatar-rounded me-2 bg-light text-[#8c9097] dark:text-white/50">
+                                                    <i class="ri-mail-line align-middle text-[.875rem] text-[#8c9097] dark:text-white/50"></i>
+                                                </span>
+                                                {{request.user.email}}
+                                            </p>
+                                            <p class="mb-2">
+                                                <span class="avatar avatar-sm avatar-rounded me-2 bg-light text-[#8c9097] dark:text-white/50">
+                                                    <i class="ri-phone-line align-middle text-[.875rem] text-[#8c9097] dark:text-white/50"></i>
+                                                </span>
+                                                {{ request.user.profile.phone_number }}
+                                            </p>
+                                            <p class="mb-0">
+                                                <span class="avatar avatar-sm avatar-rounded me-2 bg-light text-[#8c9097] dark:text-white/50">
+                                                    <i class="ri-map-pin-line align-middle text-[.875rem] text-[#8c9097] dark:text-white/50"></i>
+                                                </span>
+                                                {{ request.user.profile.location }}
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="p-6 border-b dark:border-defaultborder/10 border-dashed sm:flex items-center">
+                                        <p class="text-[.9375rem] mb-2 me-6 font-semibold">Social Networks :</p>
+                                        <div class="btn-list mb-0">
+                                            <button aria-label="button" type="button" class="ti-btn ti-btn-sm ti-btn-primary text-primary me-[.375rem] mb-1">
+                                                <i class="ri-facebook-line font-semibold"></i>
+                                            </button>
+                                            <button aria-label="button" type="button" class="ti-btn ti-btn-sm ti-btn-secondary me-[.375rem] mb-1">
+                                                <i class="ri-twitter-line font-semibold"></i>
+                                            </button>
+                                            <button aria-label="button" type="button" class="ti-btn ti-btn-sm ti-btn-warning me-[.375rem] mb-1">
+                                                <i class="ri-instagram-line font-semibold"></i>
+                                            </button>
+                                            <button aria-label="button" type="button" class="ti-btn ti-btn-sm ti-btn-success me-[.375rem] mb-1">
+                                                <i class="ri-github-line font-semibold"></i>
+                                            </button>
+                                            <button aria-label="button" type="button" class="ti-btn ti-btn-sm ti-btn-danger me-[.375rem] mb-1">
+                                                <i class="ri-youtube-line font-semibold"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="p-6 border-b dark:border-defaultborder/10 border-dashed">
+                                        <p class="text-[.9375rem] mb-2 me-6 font-semibold">Skills :</p>
+                                        <div>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">Cloud computing</span>
+                                            </a>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">Data analysis</span>
+                                            </a>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">DevOps</span>
+                                            </a>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">Machine learning</span>
+                                            </a>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">Programming</span>
+                                            </a>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">Security</span>
+                                            </a>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">Python</span>
+                                            </a>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">JavaScript</span>
+                                            </a>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">Ruby</span>
+                                            </a>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">PowerShell</span>
+                                            </a>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">Statistics</span>
+                                            </a>
+                                            <a href="javascript:void(0);">
+                                                <span class="badge bg-light text-[#8c9097] dark:text-white/50 m-1">SQL</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!--End::row-1 -->
+                </div>
+            </div>
+
+            <!-- END MAIN-CONTENT -->
+
+            <!-- SEARCH-MODAL -->
+
+            
+            <div id="search-modal" class="hs-overlay ti-modal hidden mt-[1.75rem]">
+                <div class="ti-modal-box">
+                    <div class="ti-modal-content !border !border-defaultborder dark:!border-defaultborder/10 !rounded-[0.5rem]">
+                        <div class="ti-modal-body">
+
+                            <div class="input-group border-[2px] border-primary rounded-[0.25rem] w-full flex">
+                                <a aria-label="anchor" href="javascript:void(0);"
+                                    class="input-group-text flex items-center bg-light border-e-[#dee2e6] !py-[0.375rem] !px-[0.75rem] !rounded-none !text-[0.875rem]"
+                                    id="Search-Grid"><i class="fe fe-search header-link-icon text-[0.875rem]"></i>
+                                </a>
+
+                                <input type="search" class="form-control border-0 px-2 !text-[0.8rem] w-full focus:ring-transparent"
+                                    placeholder="Search" aria-label="Username">
+
+                                <a aria-label="anchor" href="javascript:void(0);" class="flex items-center input-group-text bg-light !py-[0.375rem] !px-[0.75rem]"
+                                    id="voice-search"><i class="fe fe-mic header-link-icon"></i>
+                                </a>
+                                <div class="hs-dropdown ti-dropdown">
+                                    <a aria-label="anchor" href="javascript:void(0);"
+                                        class="flex items-center hs-dropdown-toggle ti-dropdown-toggle btn btn-light btn-icon !bg-light !py-[0.375rem] !rounded-none !px-[0.75rem] text-[0.95rem] h-[2.413rem] w-[2.313rem]">
+                                        <i class="fe fe-more-vertical"></i>
+                                    </a>
+
+                                    <ul class="absolute hs-dropdown-menu ti-dropdown-menu !-mt-2 !p-0 hidden">
+                                        <li><a
+                                            class="ti-dropdown-item flex text-defaulttextcolor dark:text-defaulttextcolor/70 !py-[0.5rem] !px-[0.9375rem] !text-[0.8125rem] font-medium"
+                                            href="javascript:void(0);">Action</a></li>
+                                        <li><a
+                                            class="ti-dropdown-item flex text-defaulttextcolor dark:text-defaulttextcolor/70 !py-[0.5rem] !px-[0.9375rem] !text-[0.8125rem] font-medium"
+                                            href="javascript:void(0);">Another action</a></li>
+                                        <li><a
+                                            class="ti-dropdown-item flex text-defaulttextcolor dark:text-defaulttextcolor/70 !py-[0.5rem] !px-[0.9375rem] !text-[0.8125rem] font-medium"
+                                            href="javascript:void(0);">Something else here</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a
+                                            class="ti-dropdown-item flex text-defaulttextcolor dark:text-defaulttextcolor/70 !py-[0.5rem] !px-[0.9375rem] !text-[0.8125rem] font-medium"
+                                            href="javascript:void(0);">Separated link</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <p class="font-normal  text-[#8c9097] dark:text-white/50 text-[0.813rem] dark:text-gray-200 mb-2">Are You Looking For...</p>
+
+                                <span class="search-tags text-[0.75rem] !py-[0rem] !px-[0.55rem] dark:border-defaultborder/10"><i class="fe fe-user me-2"></i>People<a
+                                    href="javascript:void(0)" class="tag-addon header-remove-btn"><span class="sr-only">Remove badge</span><i class="fe fe-x"></i></a></span>
+                                <span class="search-tags text-[0.75rem] !py-[0rem] !px-[0.55rem] dark:border-defaultborder/10"><i class="fe fe-file-text me-2"></i>Pages<a
+                                    href="javascript:void(0)" class="tag-addon header-remove-btn"><span class="sr-only">Remove badge</span><i class="fe fe-x"></i></a></span>
+                                <span class="search-tags text-[0.75rem] !py-[0rem] !px-[0.55rem] dark:border-defaultborder/10"><i
+                                    class="fe fe-align-left me-2"></i>Articles<a href="javascript:void(0)" class="tag-addon header-remove-btn"><span class="sr-only">Remove badge</span><i
+                                        class="fe fe-x"></i></a></span>
+                                <span class="search-tags text-[0.75rem] !py-[0rem] !px-[0.55rem] dark:border-defaultborder/10"><i class="fe fe-server me-2"></i>Tags<a
+                                    href="javascript:void(0)" class="tag-addon header-remove-btn"><span class="sr-only">Remove badge</span><i class="fe fe-x"></i></a></span>
+
+                            </div>
+
+                            <div class="my-[1.5rem]">
+                                <p class="font-normal  text-[#8c9097] dark:text-white/50 text-[0.813rem] mb-2">Recent Search :</p>
+
+                                <div id="dismiss-notifications-alert" role="alert"
+                                    class="!p-2 border dark:border-defaultborder/10 rounded-[0.3125rem] flex items-center text-defaulttextcolor dark:text-defaulttextcolor/70 !mb-2 !text-[0.8125rem] alert">
+                                    <a href="notifications.html"><span>Notifications</span></a>
+                                    <a aria-label="anchor" class="ms-auto leading-none" href="javascript:void(0);" data-hs-remove-element="#dismiss-notifications-alert"><i
+                                        class="fe fe-x !text-[0.8125rem] text-[#8c9097] dark:text-white/50"></i></a>
+                                </div>
+
+                                <div id="dismiss-alerts-alert" role="alert"
+                                    class="!p-2 border dark:border-defaultborder/10 rounded-[0.3125rem] flex items-center text-defaulttextcolor dark:text-defaulttextcolor/70 !mb-2 !text-[0.8125rem] alert">
+                                    <a href="alerts.html"><span>Alerts</span></a>
+                                    <a aria-label="anchor" class="ms-auto leading-none" href="javascript:void(0);" data-hs-remove-element="#dismiss-alerts-alert"><i
+                                        class="fe fe-x !text-[0.8125rem] text-[#8c9097] dark:text-white/50"></i></a>
+                                </div>
+
+                                <div id="dismiss-mail-alert" role="alert"
+                                    class="!p-2 border dark:border-defaultborder/10 rounded-[0.3125rem] flex items-center text-defaulttextcolor dark:text-defaulttextcolor/70 !mb-0 !text-[0.8125rem] alert">
+                                    <a href="mail.html"><span>Mail</span></a>
+                                    <a aria-label="anchor" class="ms-auto lh-1" href="javascript:void(0);" data-hs-remove-element="#dismiss-mail-alert"><i
+                                        class="fe fe-x !text-[0.8125rem] text-[#8c9097] dark:text-white/50"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ti-modal-footer !py-[1rem] !px-[1.25rem]">
+                            <div class="inline-flex rounded-md  shadow-sm">
+                                <button type="button"
+                                    class="ti-btn-group !px-[0.75rem] !py-[0.45rem]  rounded-s-[0.25rem] !rounded-e-none ti-btn-primary !text-[0.75rem] dark:border-white/10">
+                                    Search
+                                </button>
+                                <button type="button"
+                                    class="ti-btn-group  ti-btn-primary-full rounded-e-[0.25rem] dark:border-white/10 !text-[0.75rem] !rounded-s-none !px-[0.75rem] !py-[0.45rem]">
+                                    Clear Recents
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END SEARCH-MODAL -->
+
+            <!-- FOOTER -->
+            
+            {% include 'components/admin_footer.html'%}

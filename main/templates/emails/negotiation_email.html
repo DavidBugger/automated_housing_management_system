@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            background: #007bff;
+            color: #ffffff;
+            padding: 10px 0;
+            border-radius: 8px 8px 0 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button-primary {
+            background-color: #28a745;
+        }
+        .button-secondary {
+            background-color: #007bff;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>Smart Contract for Property Purchase</h1>
+        </div>
+        <div class="content">
+            <p>Dear Buyer,</p>
+            <p>
+                Please review and sign the smart contract for the property purchase at the link below.
+            </p>
+            <p><strong>Proposed Amount:</strong> N{{ proposed_amount }}</p>
+            <p>
+                <a href="{{ contract_url }}" class="button button-secondary"><span class="text-white" style="color:white !important;">Download Contract</span></a>
+            </p>
+            <p>
+                Once you have reviewed the contract, proceed to payment using the button below:
+            </p>
+            <p>
+                <a href="{{ payment_url }}" class="button button-primary"><span class="text-white" style="color:white !important;">Proceed to Payment</span></a>
+            </p>
+        </div>
+        <div class="footer">
+            <p>This email was sent from the Automated House Inventory System.</p>
+        </div>
+    </div>
+</body>
+</html>

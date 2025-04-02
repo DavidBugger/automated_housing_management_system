@@ -1,0 +1,109 @@
+
+
+<div class="grid grid-cols-12 gap-x-6">
+    {% for property in property_filter.qs %}
+    <div class="xxl:col-span-3 xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+        <div class="box product-card">
+            <div class="box-body">
+                <a href="/home" class="product-image">
+                    <img src="{{property.property_photo.url}}" class="card-img mb-3 rounded-md"
+                        alt="...">
+                </a>
+                <div class="product-icons">
+                    <button type = "button" id="like_{{property.id}}" aria-label="Like this property"  data-property-id="{{property.id}}" value = "like" class = "wishlist btn btn-secondary ">
+                        {% if property.id in liked_listing_ids %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-heart"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z">
+                        </path>
+                    </svg> 
+                    {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-heart"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z">
+                        </path>
+                    </svg> 
+                    {% endif %}
+                </button>  
+                    {% comment %} <a aria-label="anchor" href="wishlist.html" class="wishlist"><i
+                            class="ri-heart-line"></i></a> {% endcomment %}
+                            {% comment %} {% if property.seller.users ==  request.user  %}
+                            <a href="{% url 'edit_property' property_id=property.id %}" type="button" class="btn btn-sm btn-outline-secondary"><i
+                                class="ri-shopping-cart-line"></i>Edit</a>
+                    
+                            {% endif %}
+                    <a aria-label="anchor" href="{% url 'property_listing' id=property.id  %}" class="view"><i
+                            class="ri-eye-line"></i></a>  {% endcomment %}
+                </div>
+                <p
+                    class="product-name font-semibold mb-0 flex items-center justify-between">
+                    {{property.property_name}}<span class="ltr:float-right rtl:float-left text-warning text-xs">4.2<i
+                            class="ri-star-s-fill align-middle ms-1 inline-block"></i></span>
+                </p>
+               
+                <p
+                    class="product-name font-semibold mb-0 flex items-center justify-between">
+                    {{property.color}}<span class="ltr:float-right rtl:float-left text-warning text-xs"></span>
+                </p>
+                <p class="product-description text-[.6875rem] text-[#8c9097] dark:text-white/50 mb-2">{{property.description}}</p>
+                <p class="mb-1 font-semibold text-[1rem] flex items-center justify-between">
+                    <span>$229<span
+                            class="text-[#8c9097] dark:text-white/50 line-through ms-1 inline-block opacity-[0.6]">$1,799</span></span><span
+                        class="badge bg-secondary/10 text-secondary ltr:float-right rtl:float-left text-[0.625rem]">
+                        Property Status: 
+                {% if property.is_sold %}
+                    <span class="badge bg-success text-white">Sold</span>
+                {% else %}
+                    <span class="badge bg-warning text-black">Not Sold</span>
+                {% endif %}
+                    
+                    </span>
+                      
+                </p>
+                <p
+                    class="text-[.6875rem] text-success font-semibold mb-0 flex items-center">
+                    <i class="ti ti-discount-2 text-[1rem] me-1"></i>Offer Price $229
+                </p>
+
+                <div class="row justify-content-start align-items-center">
+                    <div class = "col-1">
+                        <img src="{{property.seller.photo.url}}" class="rounded-circle" height="30" width="30"
+                        style="object-fit: cover;">
+                    </div>
+                    <div class = "col-4">
+                        <p class = "card-text">{{ property.seller.users.username }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+
+    <script>
+      
+        $("#like_{{property.id}}").click(function (){
+            
+            var propertyId = $(this).data('property-id');
+            $.ajax({
+                type: "POST",
+                url: "{% url 'like_listing' " + propertyId + "/like/",  // Check this line
+                data: {
+                    "id": propertyId,
+                    "csrfmiddlewaretoken": "{{csrf_token}}"},
+                dataType: "json",
+                success: function(r){
+                    if(r.is_liked_by_user){
+                        alert('')
+                        $("#like_{{property.id}}").find("svg").attr("fill", r.is_liked_by_user ? "white" :  "black");
+                    }
+                },
+                error: function (rs, e){
+                    alert(e);
+                }
+            });
+        });
+        
+    </script>

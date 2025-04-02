@@ -1,0 +1,111 @@
+
+
+{% load static %}
+{% include 'base/admin_base.html' %}
+{% include 'components/admin_nav.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+       
+
+	<body>
+
+         <!-- PAGE -->
+         <div class="page">
+
+            <!-- HEADER -->
+
+           {% include 'components/admin_header.html' %} 
+           
+            <!-- END HEADER -->
+
+            <!-- SIDEBAR -->
+            
+           {% include 'components/admin_sidebar.html' %}
+
+         <!-- MAIN-CONTENT -->
+         <!-- MAIN-CONTENT -->
+         <div class="main-content app-content " >
+            {% block content %}
+    
+            <div class="container">
+                {% if messages %}
+                {% for message in messages %}
+                  <div class="bg-primary text-white alert alert-{{ message.tags }}">
+                    {{ message }}
+                   
+                  </div>
+                {% endfor %}
+              {% endif %}
+            <div class="container-fluid text-center py-5" style="margin-left:45px !important;">
+                <div class="container px-4 py-5" id="hanging-icons">
+                    <div class="row g-4">
+                        <div class="col d-flex align-items-start">
+                            <div>
+                                <h2 class="mb-3 border-bottom" style="color: black">Add Property</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-12 gap-6 ">
+                        <div class="xl:col-span-6 col-span-12">
+                            <div class="box">
+                                <div class="box-header justify-between">
+                                    <div class="box-title">
+                                        Property  Form
+                                    </div>
+                                    
+                                </div>
+                                <div class="box-body">
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                    <div class="mb-4">
+                                        {{property_form|crispy}}
+                                    </div>
+                                    
+                                    
+                                    
+                                </div>
+                                <div class="box-footer hidden !border-t-0">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xl:col-span-6 col-span-12">
+                            <div class="box">
+                                <div class="box-header justify-between">
+                                    <div class="box-title">
+                                       Location Details 
+                                    </div>
+                                </div>
+                                <div class="box-body" >
+                                    
+                                    <div class="mb-4">
+                                        {{location_form|crispy}}
+                                    </div>
+                                    
+                                    <div class="xl:col-span-12 col-span-12 grid mt-2">
+                                        <button type="submit" class="ti-btn ti-btn-lg bg-primary text-white !font-medium dark:border-defaultborder/10">Save
+                                        </button>
+                                    </div>
+                                    
+                                </form>
+                                </div>
+                                <div class="box-footer hidden !border-t-0">
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- End:: row-1 -->
+
+                    
+                    
+                </div>
+            </div>
+
+</div>
+{% endblock %}
+{% include 'components/admin_footer.html'%}
+

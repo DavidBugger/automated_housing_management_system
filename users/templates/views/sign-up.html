@@ -1,0 +1,93 @@
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-vertical-style="overlay" class="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+
+        <!-- META DATA -->
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="Author" content="prodevzhub">
+        <meta name="Description" content="Django Tailwind">
+        <meta name="keywords" content="django, tailwind, machine learning">
+        
+        {% block title %}
+        <!-- TITLE -->
+		<title> Sign - Up </title>
+        {% endblock %}
+        <!-- FAVICON -->
+        <link rel="icon" href="https://php.spruko.com/tailwind/ynex/ynex/assets/images/brand-logos/favicon.ico" type="image/x-icon">
+        <!-- ICONS CSS -->
+        <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet">
+        <!-- STYLE CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <!-- MAIN JS -->
+        <script src="{% static 'assets/js/authentication-main.js'%}"></script>
+	</head>
+    <body>
+
+        <div class="container">
+            {% block content %}
+    
+            <div class="container">
+                {% if messages %}
+                {% for message in messages %}
+                  <div class="bg-primary text-white alert alert-{{ message.tags }}">
+                    {{ message }}
+                   
+                  </div>
+                {% endfor %}
+              {% endif %}
+            <div class="flex justify-center authentication authentication-basic items-center h-full text-defaultsize text-defaulttextcolor">
+                <div class="grid grid-cols-12">
+                    <div class="xxl:col-span-4 xl:col-span-4 lg:col-span-4 md:col-span-3 sm:col-span-2"></div>
+                    <div class="xxl:col-span-4 xl:col-span-4 lg:col-span-4 md:col-span-6 sm:col-span-8 col-span-12">
+                        <div class="my-[2.5rem] flex justify-center">
+                            <a class="navbar-brand" style="font-weight:bold; font-size:20px;" href="{% url 'main' %}">
+                                <span style="color:#2d3d7e;">DAN MAMA<span style="color:#ed7d3a; ">HOMES</span>  
+                            </a>
+                        </div>
+                        <div class="box">
+                            <div class="box-body !p-[3rem]">
+                                <p class="h5 font-semibold mb-2 text-center">Sign Up</p>
+                                <p class="mb-4 text-[#8c9097] dark:text-white/50 opacity-[0.7] font-normal text-center">Welcome &amp; Join us by
+                                    creating a free account !</p>
+                                    <form action="" method="POST">
+                                <div class="grid grid-cols-12 gap-y-4">
+                                    <div class="xl:col-span-12 col-span-12">
+                                        {% csrf_token %}
+                                        {{ register_form|crispy }}
+                                       
+                                    </div>
+                                    <div class="xl:col-span-12 col-span-12 grid mt-2">
+                                        <button type="submit" id="register-btn" class="ti-btn ti-btn-lg bg-primary text-white !font-medium dark:border-defaultborder/10">Create
+                                            Account</button>
+                                    </div>
+                              </form>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-[0.75rem] text-[#8c9097] dark:text-white/50 mt-4">Already have an account? <a
+                                            href="/sign-in" class="text-primary">Sign In</a></p>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="xxl:col-span-4 xl:col-span-4 lg:col-span-4 md:col-span-3 sm:col-span-2"></div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+
+        
+        <!-- SCRIPTS -->
+        <!-- Show Password JS -->
+        <script src="{% static 'assets/js/show-password.js' %}"></script>
+        <!-- END SCRIPTS -->
+
+	</body>
+</html>

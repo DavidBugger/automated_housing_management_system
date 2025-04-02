@@ -1,0 +1,51 @@
+	{% load static %}
+	<!-- Header Start -->
+	<header class="main-header">
+		<div class="header-sticky">
+			<nav class="navbar navbar-expand-lg">
+				<div class="container">
+					<!-- Logo Start -->
+					<a class="navbar-brand" style="font-weight:bold;" href="{% url 'main' %}">
+						{% comment %} <img src="{% static 'images/adron_home/logowhite.png' %}" alt="Logo"> {% endcomment %}
+						<span style="color:#2d3d7e;">DAN MAMA <span style="color:#ed7d3a; ">HOMES</span>
+						
+					</a>
+					<!-- Logo End -->
+
+					<!-- Main Menu start -->
+					<div class="collapse navbar-collapse main-menu">
+						<ul class="navbar-nav mr-auto" id="menu">
+							{% comment %} <li class="nav-item submenu"><a class="nav-link" href="index-2.html">Home</a> {% endcomment %}
+							{% comment %} <li class="nav-item"><a class="nav-link" href="/">Home</a></li> {% endcomment %}
+							</li>
+							<li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About us</a></li>
+						
+								<ul>
+									
+									<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact us</a></li>
+									<li class="nav-item"><a class="nav-link" href="{{request.user}}">Contact us</a></li>
+									
+								</ul>
+							</li>
+							{%if request.user.is_authenticated %}
+							<li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Welcome {{request.user}}</a></li>
+							{%else%}
+							<li class="nav-item "><a class="nav-link" href=" {% url 'sign-in' %}">Login</a></li>
+							{%endif%}
+							{% comment %} <li class="nav-item "><a class="nav-link" href=" {% url 'staff_login' %}">Staff Login</a></li> {% endcomment %}
+
+							<li class="nav-item highlighted-menu"><a class="nav-link" href="{% url 'sign-up' %}">Sign Up</a></li>
+							
+						
+						</ul>
+					</div>
+					<!-- Main Menu End -->
+					<div class="navbar-toggle"></div>
+				</div>
+			</nav>
+
+			<div class="responsive-menu"></div>
+		</div>
+	</header>
+	<!-- Header End -->

@@ -1,0 +1,691 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Awaiken">
+	{% block title %}
+	<!-- Page Title -->
+	<title>Dan Mama | Home</title>
+	{% endblock %}
+	<!-- Favicon Icon -->
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+	<!-- Google Fonts css-->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+	<!-- Bootstrap css -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+	<!-- SlickNav css -->
+	<link href="{% static 'css/slicknav.min.css' %}" rel="stylesheet">
+	<!-- Swiper css -->
+	<link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}">
+	<!-- Font Awesome icon css-->
+	<link href="{% static 'css/all.min.css'%}" rel="stylesheet" media="screen">
+	<!-- Animated css -->
+	<link href="{% static 'css/animate.css' %}" rel="stylesheet">
+	<!-- Magnific css -->
+	<link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet">
+	<!-- Main custom css -->
+	<link href="{% static 'css/custom.css' %}" rel="stylesheet" media="screen">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="tt-magic-cursor">
+
+	<!-- Preloader Start -->
+	<div class="preloader">
+		<div class="loading-container">
+			<div class="loading"></div>
+			<div id="loading-icon"><img src="{% static 'images/loader.svg' %}" alt=""></div>
+		</div>
+	</div>
+	<!-- Preloader End -->
+
+	<!-- Magic Cursor Start -->
+	<div id="magic-cursor">
+		<div id="ball"></div>
+	</div>
+	<!-- Magic Cursor End -->
+
+	<!-- Header Start -->
+	{% include "components/nav.html" %}
+	<!-- Header End -->
+
+	<!-- Hero Section Start -->
+	<div class="hero hero-slider">
+		<div class="hero-section">
+			<!-- Hero Carousel Start -->
+			<div class="hero-carousel">
+				<div class="swiper">
+					<div class="swiper-wrapper">
+						<!-- Hero Slide Start -->
+					  	<div class="swiper-slide">
+							<div class="hero-slide">
+								<div class="hero-slide-image">
+									
+									<img src="{% static 'images/adron_home/hero-bg.png' %}" alt="">
+								</div>
+
+								<div class="hero-content">
+									<div class="section-title">
+										<h3 class="text-white">Welcome to DAN MAMA HOMES</h3>
+										<h1>Revolutionizing real estate in Nigeria</h1>
+									</div>
+									<div class="hero-content-body">
+										<p>through innovative and sustainable housing solutions</p>
+									</div>
+		
+									<div class="hero-content-footer">
+										<a href="#products" class="btn-default">View Property</a>
+										{% comment %} <a href="#" class="btn-default btn-border">Contact Now</a> {% endcomment %}
+									</div>
+								</div>
+							</div>
+					  	</div>
+						<!-- Hero Slide End -->
+					  	<div class="swiper-slide">
+							<div class="hero-slide">
+								<div class="hero-slide-image">
+									
+									<img src="{% static 'images/adron_home/Adron-one-love-promo.webp' %}" alt="">
+								</div>
+
+								<div class="hero-content">
+									<div class="section-title">
+										<h3 class="text-white">Welcome to DAN MAMA HOMES</h3>
+										<h1>Invest Today in Your Dream Home</h1>
+									</div>
+									<div class="hero-content-body">
+										<p>Years of Real Estates and Innovation</p>
+									</div>
+		
+									<div class="hero-content-footer">
+										<a href="#products" class="btn-default">View Property</a>
+										{% comment %} <a href="#" class="btn-default btn-border">Contact Now</a> {% endcomment %}
+									</div>
+								</div>
+							</div>
+					  	</div>
+						<!-- Hero Slide End -->
+
+						<!-- Hero Slide Start -->
+						<div class="swiper-slide">
+							<div class="hero-slide">
+								<div class="hero-slide-image">
+									<img src="{% static 'images/adron_home/Capetown_adron.webp' %}" alt="">
+								</div>
+
+								<div class="hero-content">
+									<div class="section-title">
+										<h3 class="text-white">Welcome to DAN MAMA HOMES</h3>
+										<h1>Choose Your next Dream Place</h1>
+									</div>
+									<div class="hero-content-body">
+										<p>Years of Real Estates and Innovation</p>
+
+									</div>
+		
+									<div class="hero-content-footer">
+										<a href="#products" class="btn-default">View Property</a>
+										{% comment %} <a href="#" class="btn-default btn-border">Contact Now</a> {% endcomment %}
+									</div>
+								</div>
+							</div>
+					  	</div>
+						<!-- Hero Slide End -->
+					</div>
+					
+					<div class="hero-button-prev"></div>
+					<div class="hero-button-next"></div>
+				</div>
+			</div>
+			<!-- Hero Carousel End -->
+		</div>
+
+		
+	</div>
+	<!-- Hero Section End -->
+
+
+	<!-- About Section Start -->
+	<div class="about-us">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<!-- About Left Image Start -->
+					<div class="about-images">
+						<div class="about-video">
+							<figure class="reveal image-anime">
+								<img src="{% static 'images/video-img-2.jpg' %}" alt="">
+							</figure>
+
+							<div class="video-play-button">
+								<a href="https://youtu.be/hiwU9SRATMk?si=_wSaV77uWwCi8oQ8" class="popup-video">
+									<img src="{% static 'images/icon-play.svg' %}" alt="">
+								</a>
+							</div>
+						</div>
+
+						<div class="about-image">
+							<figure class="reveal image-anime">
+								<img src="{% static 'images/video-img-1.jpg' %}" alt="">
+							</figure>
+						</div>
+					</div>
+					<!-- About Left Image End -->
+				</div>
+				<div class="col-lg-6">
+					<!-- About Content Start -->
+					<div class="about-content">
+						<!-- Section Title Start -->
+						<div class="section-title">
+							<h3 class="wow fadeInUp">About DAN MAMA HOMES</h3>
+							<h2 class="text-anime">The Future of Living</h2>
+						</div>
+						<!-- Section Title End -->
+
+						<!-- About Content Body Start -->
+						<div class="about-content-body">
+							<p class="wow fadeInUp" data-wow-delay="0.5s">We are committed to providing affordable housing, commercial spaces, and investment opportunities while ensuring top-notch quality, safety, and customer satisfaction.</p>
+
+							<ul>
+								<li class="wow fadeInUp" data-wow-delay="0.75s">
+									<div class="icon-box"><img src="{% static 'images/icon-about-1.svg' %}" alt=""></div>
+									<span>Smart Home Design</span>
+								</li>
+
+								<li class="wow fadeInUp" data-wow-delay="1s">
+									<div class="icon-box"><img src="{% static 'images/icon-about-2.svg' %}" alt=""></div>
+									<span>Beautiful Scene Around</span>
+								</li>
+
+								<li class="wow fadeInUp" data-wow-delay="1.25s">
+									<div class="icon-box"><img src="{% static 'images/icon-about-3.svg' %}" alt=""></div>
+									<span>Exceptional Lifestyle</span>
+								</li>
+
+								<li class="wow fadeInUp" data-wow-delay="1.5s">
+									<div class="icon-box"><img src="{% static 'images/icon-about-4.svg' %}" alt=""></div>
+									<span>Complete 24/7 Security</span>
+								</li>
+							</ul>
+
+							<a href="/about" class="btn-default wow fadeInUp" data-wow-delay="1.75s">Read More</a>
+						</div>
+						<!-- About Content Body End -->
+
+					</div>
+					<!-- About Content End -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- About Section End -->
+	
+
+	<!-- dynamic-->
+
+	<!-- Property Type Section Start -->
+<div class="property-types">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp">Property Types</h3>
+                    <h2 class="text-anime">Explore Apartment Types</h2>
+                </div>
+                <!-- Section Title End -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Property Type Slider Start -->
+                <div class="property-type-slider">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <!-- Loop through your dynamic property types here -->
+                            {% for property_type in property_types %}
+                            <div class="swiper-slide">
+                                <div class="property-type-item">
+                                    <div class="icon-box">
+                                        <img src="{{ property_type.icon_url }}" alt="">
+                                    </div>
+
+                                    <h3>{{ property_type.name }}</h3>
+                                    <p>{{ property_type.property_count }} Properties</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <!-- Property Type Slider End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Property Type Section End -->
+
+
+
+{% include 'components/home_property_list.html' %}
+
+
+	
+
+
+	<!-- How It Work Section Start -->
+	<div class="how-it-works">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Section Title Start -->
+					<div class="section-title">
+						<h3 class="wow fadeInUp">How it works</h3>
+						<h2 class="text-anime">Find a Perfect Home</h2>
+					</div>
+					<!-- Section Title End -->
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<!-- How it Work Item Start -->
+					<div class="how-it-work-item wow fadeInUp" data-wow-delay="0.25s">
+						<div class="icon-box">
+							<img src="{% static 'images/icon-how-1.svg' %}" alt="">
+						</div>
+
+						<h3>Find Property</h3>
+						<p>Duis pulvinar metus elit, ut aliquam est sollicitudin. est interdum.</p>
+					</div>
+					<!-- How it Work Item End -->
+				</div>
+
+				<div class="col-lg-3 col-md-6">
+					<!-- How it Work Item Start -->
+					<div class="how-it-work-item wow fadeInUp" data-wow-delay="0.5s">
+						<div class="icon-box">
+							<img src="{% static 'images/icon-how-2.svg' %}" alt="">
+						</div>
+
+						<h3>Meet Retailer</h3>
+						<p>Duis pulvinar metus elit, ut aliquam est sollicitudin. est interdum.</p>
+					</div>
+					<!-- How it Work Item End -->
+				</div>
+
+				<div class="col-lg-3 col-md-6">
+					<!-- How it Work Item Start -->
+					<div class="how-it-work-item wow fadeInUp" data-wow-delay="0.75s">
+						<div class="icon-box">
+							<img src="{% static 'images/icon-how-3.svg' %}" alt="">
+						</div>
+
+						<h3>Documents</h3>
+						<p>Duis pulvinar metus elit, ut aliquam est sollicitudin. est interdum.</p>
+					</div>
+					<!-- How it Work Item End -->
+				</div>
+
+				<div class="col-lg-3 col-md-6">
+					<!-- How it Work Item Start -->
+					<div class="how-it-work-item wow fadeInUp" data-wow-delay="1s">
+						<div class="icon-box">
+							<img src="{% static 'images/icon-how-4.svg' %}" alt="">
+						</div>
+
+						<h3>Take the keys</h3>
+						<p>Duis pulvinar metus elit, ut aliquam est sollicitudin. est interdum.</p>
+					</div>
+					<!-- How it Work Item End -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- How It Work Section End -->
+
+	<!-- Why Choose us Section Start -->
+	<div class="why-choose-us">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 order-lg-2">
+					<!-- Why Choose us Images Start -->
+					<div class="why-choose-us-images">
+						<div class="why-choose-us-image1">
+							<figure class="reveal image-anime">
+								<img src="{% static 'images/why-us-img-1.jpg' %}" alt="">
+							</figure>
+						</div>
+
+						<div class="why-choose-us-image2">
+							<figure class="reveal image-anime">
+								<img src="{% static 'images/why-us-img-2.jpg' %}" alt="">
+							</figure>
+						</div>
+
+						<div class="exclusive-agents">
+							<h5>10k+ Exclusive Agetns</h5>
+							<img src="{% static 'images/exclusive-agents.png' %}" alt="">
+						</div>
+					</div>
+					<!-- Why Choose us Images End -->
+				</div>
+
+				<div class="col-lg-6 order-lg-1">
+					<!-- Why Choose us Content Start -->
+					<div class="why-choose-us-content">
+						<!-- Section Title Start -->
+						<div class="section-title">
+							<h3 class="wow fadeInUp">Why CHoose Us</h3>
+							<h2 class="text-anime">Let's Find the Right Selling Option for You</h2>
+						</div>
+						<!-- Section Title End -->
+
+						<div class="why-choose-us-body wow fadeInUp" data-wow-delay="0.25s">
+							<p>Duis pulvinar metus elit, ut aliquam est sollicitudin finibus. Integer lobortis est interdum. Suspendisse nunc est, varius quis fringilla ac, commodo a ante. Praesent non elit cursus, aliquam sapien quis, dictum tortor.</p>
+
+							<ul>
+								<li>Find Excellent Deals</li>
+								<li>Friendly Host & Fast Support</li>
+								<li>List Your Own Property</li>
+							</ul>
+
+							<a href="#" class="btn-default">Read More</a>
+						</div>
+					</div>
+					<!-- Why Choose us Content End -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Why Choose us Section End -->
+
+	<!-- Infobar Section Start -->
+	<div class="infobar-cta">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Infobar Box Start -->
+					<div class="infobar-box">
+						<div class="row align-items-center">
+							<div class="col-lg-7">
+								<!-- Infobar Content Start -->
+								<div class="cta-content">
+									<h2 class="text-anime">Need Help? Talk to Our Expert.</h2>
+									<p class="wow fadeInUp">Duis pulvinar metus elit, ut aliquam est sollicitudin finibus. Integer lobortis est interdum. Suspendisse nunc est, varius quis fringilla ac, commodo a ante.</p>
+								</div>
+								<!-- Infobar Content End -->
+							</div>
+			
+							<div class="col-lg-5">
+								<!-- CTA Button Start -->
+								<div class="cta-button">
+									<a href="#" class="btn-default btn-border"><i class="fa-solid fa-phone-volume"></i> +123 456 789</a>
+									<a href="#" class="btn-default">Contact Now</a>
+								</div>
+								<!-- CTA Button End -->
+							</div>
+						</div>
+					</div>
+					<!-- Infobar Box End -->
+				</div>
+			</div>			
+		</div>
+	</div>
+	<!-- Infobar Section End -->
+
+	<!-- Property By City Section Start -->
+	<div class="property-by-city">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Section Title Start -->
+					<div class="section-title">
+						<h3 class="wow fadeInUp">Location</h3>
+						<h2 class="text-anime">Properties by Cities</h2>
+					</div>
+					<!-- Section Title End -->
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<!-- Location Item Start -->
+					<div class="location-item wow fadeInUp" data-wow-delay="0.25s">
+						<!-- Location Image Start -->
+						<div class="location-image">
+							<figure>
+								<img src="images/city-1.jpg" alt="">
+							</figure>
+						</div>
+						<!-- Location Image End -->
+
+						<!-- Location Content Start -->
+						<div class="location-content">
+							<div class="location-header">
+								<h3>Surabaya</h3>
+								<p>22 Properties</p>
+							</div>
+
+							<div class="location-footer">
+								<a href="#" class="btn-default">See More</a>
+							</div>
+						</div>
+						<!-- Location Content End -->
+					</div>
+					<!-- Location Item End -->
+				</div>
+
+				<div class="col-lg-3 col-md-6">
+					<!-- Location Item Start -->
+					<div class="location-item wow fadeInUp" data-wow-delay="0.5s">
+						<!-- Location Image Start -->
+						<div class="location-image">
+							<figure>
+								<img src="{% static 'images/city-2.jpg' %}" alt="">
+							</figure>
+						</div>
+						<!-- Location Image End -->
+
+						<!-- Location Content Start -->
+						<div class="location-content">
+							<div class="location-header">
+								<h3>Jakarta</h3>
+								<p>22 Properties</p>
+							</div>
+
+							<div class="location-footer">
+								<a href="#" class="btn-default">See More</a>
+							</div>
+						</div>
+						<!-- Location Content End -->
+					</div>
+					<!-- Location Item End -->
+				</div>
+
+				<div class="col-lg-3 col-md-6">
+					<!-- Location Item Start -->
+					<div class="location-item wow fadeInUp" data-wow-delay="0.75s">
+						<!-- Location Image Start -->
+						<div class="location-image">
+							<figure>
+								<img src="{% static 'images/city-3.jpg '%}" alt="">
+							</figure>
+						</div>
+						<!-- Location Image End -->
+
+						<!-- Location Content Start -->
+						<div class="location-content">
+							<div class="location-header">
+								<h3>Medan</h3>
+								<p>22 Properties</p>
+							</div>
+
+							<div class="location-footer">
+								<a href="#" class="btn-default">See More</a>
+							</div>
+						</div>
+						<!-- Location Content End -->
+					</div>
+					<!-- Location Item End -->
+				</div>
+
+				<div class="col-lg-3 col-md-6">
+					<!-- Location Item Start -->
+					<div class="location-item wow fadeInUp" data-wow-delay="1s">
+						<!-- Location Image Start -->
+						<div class="location-image">
+							<figure>
+								<img src="images/city-4.jpg" alt="">
+							</figure>
+						</div>
+						<!-- Location Image End -->
+
+						<!-- Location Content Start -->
+						<div class="location-content">
+							<div class="location-header">
+								<h3>Bandung</h3>
+								<p>22 Properties</p>
+							</div>
+
+							<div class="location-footer">
+								<a href="#" class="btn-default">See More</a>
+							</div>
+						</div>
+						<!-- Location Content End -->
+					</div>
+					<!-- Location Item End -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Property By City Section End -->
+
+	<!-- Latest Posts Section Start -->
+	<div class="latest-posts">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Section Title Start -->
+					<div class="section-title">
+						<h3 class="wow fadeInUp">News & Blog</h3>
+						<h2 class="text-anime">Read Our Latest News</h2>
+					</div>
+					<!-- Section Title End -->
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-4">
+					<!-- Post Item Start -->
+					<div class="post-item wow fadeInUp" data-wow-delay="0.25s">
+						<!-- Post Featured Image Start -->
+						<div class="post-featured-image">
+							<figure>
+								<a href="#"><img src="images/post-1.jpg" alt=""></a>
+							</figure>
+
+							<div class="post-read-more">
+								<a href="#" class="btn-default">Read More</a>
+							</div>
+						</div>
+						<!-- Post Featured Image End -->
+
+						<!-- Post Body Start -->
+						<div class="post-body">
+							<div class="post-category">
+								<ul>
+									<li><a href="#">Apartments</a></li>
+								</ul>
+							</div>
+
+							<h3><a href="#">Our Latest Development Projects by More Efficie.</a></h3>
+						</div>
+						<!-- Post Body End -->
+					</div>
+					<!-- Post Item End -->
+				</div>
+
+				<div class="col-lg-4">
+					<!-- Post Item Start -->
+					<div class="post-item wow fadeInUp" data-wow-delay="0.5s">
+						<!-- Post Featured Image Start -->
+						<div class="post-featured-image">
+							<figure>
+								<a href="#"><img src="images/post-2.jpg" alt=""></a>
+							</figure>
+
+							<div class="post-read-more">
+								<a href="#" class="btn-default">Read More</a>
+							</div>
+						</div>
+						<!-- Post Featured Image End -->
+
+						<!-- Post Body Start -->
+						<div class="post-body">
+							<div class="post-category">
+								<ul>
+									<li><a href="#">Office</a></li>
+								</ul>
+							</div>
+
+							<h3><a href="#">Cultivating Market Leadership from the Inside.</a></h3>
+						</div>
+						<!-- Post Body End -->
+					</div>
+					<!-- Post Item End -->
+				</div>
+
+				<div class="col-lg-4">
+					<!-- Post Item Start -->
+					<div class="post-item wow fadeInUp" data-wow-delay="0.75s">
+						<!-- Post Featured Image Start -->
+						<div class="post-featured-image">
+							<figure>
+								<a href="#"><img src="images/post-3.jpg" alt=""></a>
+							</figure>
+
+							<div class="post-read-more">
+								<a href="#" class="btn-default">Read More</a>
+							</div>
+						</div>
+						<!-- Post Featured Image End -->
+
+						<!-- Post Body Start -->
+						<div class="post-body">
+							<div class="post-category">
+								<ul>
+									<li><a href="#">Apartments</a></li>
+								</ul>
+							</div>
+
+							<h3><a href="#">We Are the Next Generation of the Advertising.</a></h3>
+						</div>
+						<!-- Post Body End -->
+					</div>
+					<!-- Post Item End -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Latest Posts Section End -->
+
+{% include "components/footer.html"%}

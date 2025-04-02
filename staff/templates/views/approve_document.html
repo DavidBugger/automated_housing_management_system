@@ -1,0 +1,20 @@
+{% if messages %}
+{% for message in messages %}
+<div {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+<ul>
+    {% for document in documents %}
+        <li>
+            {{ document.title }} 
+            {% if not document.is_approved %}
+                <a href="{% url 'approve_document' document.id %}">Approve</a>
+            {% else %}
+                (Approved by {{ document.approved_by }})
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
